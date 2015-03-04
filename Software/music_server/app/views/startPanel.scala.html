@@ -1,0 +1,39 @@
+@(backCall : Call, singOutCall : Call )
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Home")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)
+            <div class="row">
+                    <div class="col-xs-6">
+                        @buttonBlock("Canciones", routes.Assets.at("images/song.png"), controllers.routes.Songs.songs())
+                    </div>
+                    <div class="col-xs-6">
+                        @buttonBlock("Artistas", routes.Assets.at("images/artist.png"), controllers.routes.Artists.artists())
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-xs-6">
+                        @buttonBlock("Albums", routes.Assets.at("images/disc.png"), controllers.routes.Albums.albums())
+                    </div>
+                    <div class="col-xs-6">
+                        @buttonBlock("Playlists", routes.Assets.at("images/playlist.png"), controllers.routes.Playlists.playlists())
+                    </div>
+            </div>   
+            <div class="row">
+                    <div class="col-xs-6">
+                        @buttonBlock("Dispositivos", routes.Assets.at("images/device.png"), controllers.routes.Devices.devices())
+                    </div>
+                    <div class="col-xs-6">
+                        @buttonBlock("Configuraciones", routes.Assets.at("images/configurations.png"), controllers.routes.Configurations.configurations())
+                    </div>
+            </div>             
+        </div>
+    </body>
+</html>

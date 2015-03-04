@@ -1,0 +1,52 @@
+@(backCall : Call, singOutCall : Call, deviceList : List[Device])
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Dispositivos")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)    
+
+            <div class="row">
+                <div class="col-xs-1">
+                </div>    
+                <div class="col-xs-6">
+                    <label>Serial</label>
+                </div>
+                <div class="col-xs-5">
+                </div>                    
+            </div>      
+            @for(device <- deviceList){
+            <div class="row">
+                <div class="col-xs-1">
+                </div>    
+                <div class="col-xs-6">
+                    <label>@device.getSerial()</label>
+                </div>
+                <div class="col-xs-2">
+                    <a href="@controllers.routes.Devices.delete(device.getId())"><img src="@routes.Assets.at("images/delete.png")" width="20" height="20"/>
+                </div>
+                <div class="col-xs-2">
+                    <a href="@controllers.routes.Devices.getConfig(device.getId())"><img src="@routes.Assets.at("images/configurations.png")" width="20" height="20"/>
+                </div>                
+                <div class="col-xs-1">
+                </div>                    
+            </div>
+            }
+            <hr />
+            <div class="row">
+                    <div class="col-xs-5">
+                    </div>                
+                    <div class="col-xs-2">
+                        @buttonBlock("Agregar", routes.Assets.at("images/add.png"), controllers.routes.Devices.add())
+                    </div>
+                    <div class="col-xs-5">
+                    </div>                                
+            </div>                
+        </div>
+    </body>
+</html>

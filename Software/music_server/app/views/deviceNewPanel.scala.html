@@ -1,0 +1,34 @@
+@(backCall : Call, singOutCall : Call)
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Agrergar dispositivo")
+    <body>
+        <div class ="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)   
+
+            <div class="row">
+                <h3>Coloque el numero de serie del dispositivo</h3>
+            </div>
+            
+            <div class="row">
+                <form method="post" class="form-group" action="@controllers.routes.Devices.onAdd()">
+                    <div class="col-xs-2">
+                        <label class="control-label">Numero de serie</label>
+                    </div>              
+                    <div class="col-xs-4">
+                        <input class="" type="text" name="serial" id="serial" value="Cargar"/>
+                    </div>                    
+                    <div class="col-xs-1">
+                        <input class="btn btn-primary btn-file" type="submit" value="Cargar"/>
+                    </div>                
+                </form>            
+            </div>            
+
+        </div>                
+    </body>
+</html>

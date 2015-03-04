@@ -1,0 +1,71 @@
+@(backCall : Call, singOutCall : Call, songList : List[Song])
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Canciones")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)
+            
+            <div class="row">
+                <form class="form-horizontal" action="@controllers.routes.Songs.findByName()">
+                    <div class="form-group">
+                        <label for="search" class="col-sm-2 control-label">Titulo</label>    
+                        <input type="text" class="form" name="name" id="name" placeholder="Titulo"/>
+                        <input type="submit" class="btn btn-primary" value="Buscar" />
+                    </div>                 
+                </form>            
+            </div> 
+            
+            <table class="table table-responsive">
+                <tr>
+                    <th></th>
+                    <th>Titulo</th>                                    
+                    <th>Artista</th>                                    
+                    <th>Album</th>        
+                    <th></th> 
+                </tr>                
+                @for(song <- songList){
+                <tr>
+                    <td>
+                        <a href="@controllers.routes.Songs.getSong(song.getId())"><img src="@routes.Assets.at("images/play.png")" width="20" height="20" /></a>
+                    </td>
+                    @if(song.getName() != null){
+                    <td>@song.getName()</td>                                    
+                    }else{
+                    <td>Unknown</td>                                    
+                    }
+                    @if(song.getArtist() != null && song.getArtist().getName() != null){
+                    <td><a href="@controllers.routes.Artists.getArtist(song.getArtist().getId())">@song.getArtist().getName()</a></td>                                    
+                    }else{
+                    <td>Unknown</td>                                    
+                    }
+                    @if(song.getAlbum() != null&& song.getAlbum().getName() != null){
+                    <td><a href="@controllers.routes.Albums.getAlbum(song.getAlbum().getId())">@song.getAlbum().getName()</a></td>                                    
+                    }else{
+                    <td>Unknown</td>                                    
+                    }   
+                    <th>
+                       <a href="@controllers.routes.Songs.delete(song.getId())"><img src="@routes.Assets.at("images/delete.png")" width="20" height="20" /></a> 
+                    </th>
+                </tr>              
+                }
+            </table>
+            <hr />
+
+            <div class="row">       
+                <div class="col-xs-5">
+                </div>                               
+                <div class="col-xs-12">                                           
+                    @buttonBlock("Subir", routes.Assets.at("images/uploadFile.png"), controllers.routes.Songs.uploadView())
+                </div>                                           
+                <div class="col-xs-5">
+                </div>                              
+            </div>
+        </div>
+    </body>
+</html>

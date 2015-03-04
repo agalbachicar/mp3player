@@ -1,0 +1,30 @@
+@(backCall : Call, singOutCall : Call)
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Subir cancion")
+    
+    <body>
+        <div class ="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)   
+
+            
+            <form method="post" class="form-group" enctype="multipart/form-data" action="@controllers.routes.Songs.uploadSong()">
+                <div class="col-xs-12">
+                    <label class="control-label" for="fileToUpload">Seleccione una cancion a cargar</label>
+                </div>
+                <div class="col-xs-12">
+                    <input type="file" class="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+                </div>    
+                <div class="col-xs-12">
+                    <input class="btn btn-primary btn-file" type="submit" value="Cargar"/>
+                </div>                
+            </form>            
+        </div>        
+    </body>      
+</html>
+

@@ -1,0 +1,34 @@
+@(album : Album, songs : List[Song])
+
+<div class="row-fluid">
+    @if(album.getName() != null){
+    <h1>@album.getName()</h1>
+    }else{
+    <h1>Unknown</h1>
+    }
+    @if(album.getArtist().getName() != null){
+    <h2>@album.getArtist().getName()</h2>
+    }else{
+    <h2>Unknown</h2>
+    }    
+    <br/>
+    <div>
+        <label>Canciones</label>    
+        <table class="table table-responsive">          
+              @for(song <- songs){
+              <tr>
+                  <td>
+                      <a href="@controllers.routes.Songs.getSong(song.getId())">
+                          <img src="@routes.Assets.at("images/play.png")" width="20" height="20" />
+                      </a>
+                  </td>
+                  @if(song.getName() != null){
+                  <td>@song.getName()</td>                                    
+                  }else{
+                  <td>Unknown</td>                                    
+                  }
+              </tr>              
+              }
+          </table>
+    </div>
+</div>

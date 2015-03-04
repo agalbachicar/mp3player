@@ -1,0 +1,65 @@
+@(backCall : Call, singOutCall : Call, device : Device, loadConfig : Call, statusStr : String)
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Configurar")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)    
+            <form method="POST" action="@loadConfig">
+                <input type="hidden" value="@device.getId()" name="id" />
+                <div class="form-group" >
+                    @if(statusStr != null){
+                    <div class="row text-center">
+                        <label>@statusStr</label>
+                    </div>                          
+                    }
+                    
+                    <div class="row">
+                        <div class="col-xs-3">
+                        </div>    
+                        <div class="col-xs-3">
+                              <label>IP</label>        
+                        </div>    
+                        <div class="col-xs-3">
+                              <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" name="ip"/>
+                        </div>      
+                    </div>                
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                        </div>    
+                        <div class="col-xs-3">
+                              <label>Máscara de red</label>        
+                        </div>    
+                        <div class="col-xs-3">
+                              <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" name="netmask"/>
+                        </div>      
+                    </div>              
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                        </div>    
+                        <div class="col-xs-3">
+                              <label>Gateway</label>        
+                        </div>    
+                        <div class="col-xs-3">
+                              <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" name="gateway" />
+                        </div>      
+                    </div> 
+                </div>                
+                <div class="row">
+                    <div class="col-xs-5">
+                    </div>
+                    <div class="col-xs-5">
+                        <input type="submit" class="btn btn-primary" value="Configurar"/>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </body>
+</html>

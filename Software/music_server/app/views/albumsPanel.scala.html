@@ -1,0 +1,56 @@
+@(backCall : Call, singOutCall : Call, albumList : List[Album] )
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Albums")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)
+            
+            <div class="row-fluid">
+                <form class="form-horizontal" action="@controllers.routes.Albums.findByName()">
+                    <div class="form-group">
+                        <label for="search" class="col-sm-2 control-label">Titulo</label>    
+                        <input type="text" class="form" name="name" id="name" placeholder="Titulo"/>
+                        <input type="submit" class="btn btn-primary" value="Buscar" />
+                    </div>            
+                </form>            
+            </div>  
+
+            <hr>            
+            
+            <table class="table table-responsive">
+                <tr>
+                    <th>Album</th>                                    
+                    <th>Artista</th>                                    
+                </tr>                
+                @for(album <- albumList){
+                <tr>
+                    <td>
+                        <a href="@controllers.routes.Albums.getAlbum(album.getId())">
+                            @if(album.getName() != null){
+                                @album.getName()
+                            }else{
+                                Unknown
+                            }
+                        </a>
+                    </td>                                    
+                    <td>
+                        <a href="@controllers.routes.Artists.getArtist(album.getArtist().getId())">
+                            @if(album.getArtist().getName() != null){
+                                @album.getArtist().getName()
+                            }else{
+                                Unknown
+                            }
+                        </a>
+                    </td>                                    
+                </tr>              
+                }
+            </table>
+        </div>
+    </body>
+</html>

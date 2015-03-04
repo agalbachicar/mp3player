@@ -1,0 +1,27 @@
+@(song : Song)
+
+<div class="col-xs-12">
+    @if(song.getName() != null){
+    <h1>@song.getName()</h1>
+    }else{
+    <h1>Unknown</h1>
+    }
+</div>
+<div class="col-xs-12">
+    @if(song.getArtist() != null && song.getArtist().getName() != null){
+    <h2>@song.getArtist().getName()</h2>
+    }else{
+    <h2>Unknown</h2>
+    }    
+</div>
+<div class="col-xs-12">
+    @if(song.getAlbum() != null && song.getAlbum().getName() != null){
+    <h3>@song.getAlbum().getName()</h3>
+    }else{
+    <h3>Unknown</h3>
+    }    
+</div>
+<div class="col-xs-12 media">
+    <audio src="@controllers.routes.Songs.donwload(song.getId())" controls />
+</div>
+

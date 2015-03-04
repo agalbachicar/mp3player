@@ -1,0 +1,63 @@
+@(backCall : Call, singOutCall : Call, configuration : Configuration, user : User)
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Configuraciones")
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)
+            
+            <div>
+                <form method="post" class="form-group" action="@controllers.routes.Configurations.update()">
+                    <h3>Configuracion servidor</h3>
+                    <input type="number" name="configuration.id" id="configuration.id" value="@configuration.getId()" hidden/>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label class="control-label">Puerto</label>
+                        </div>              
+                        <div class="col-xs-4">
+                            <input class="" type="number" name="configuration.udpPort" id="configuration.udpPort" value="@configuration.getUdpPort()"/>
+                        </div>                    
+                    </div>
+                    <hr/>            
+                    <h3>Configuracion de usuario</h3>
+                    <input type="number" name="user.id" id="user.id" value="@user.getId()" hidden/>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label class="control-label">Email</label>
+                        </div>              
+                        <div class="col-xs-6">
+                            <input class="" type="email" name="user.email" id="user.email" value="@user.getEmail()" />
+                        </div>                    
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label class="control-label">Contraseña</label>
+                        </div>              
+                        <div class="col-xs-6">
+                            <input class="" type="password" name="user.password" id="user.password" value="" />
+                        </div>                    
+                    </div>                        
+                    <div class="row">                    
+                        <div class="col-xs-2">
+                            <label class="control-label">Repetir contraseña</label>
+                        </div>                                      
+                        <div class="col-xs-6">
+                            <input class="" type="password" name="user.repassword" id="user.repassword" value="" />
+                        </div>                                            
+                    </div>                    
+                    <hr/>          
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="btn btn-primary btn-file" type="submit" value="Guardar"/>
+                        </div>                                                            
+                    </div>                                                            
+                </form>                            
+            </div>            
+        </div>
+    </body>
+</html>

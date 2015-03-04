@@ -1,0 +1,39 @@
+@(backCall : Call, singOutCall : Call, artistList : List[Artist])
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    @headHtml("Artistas")
+    
+    <body>
+        <div class="container-fluid">
+            @header("UTN FRBA TD II", backCall, singOutCall)    
+            
+            <div class="row-fluid">
+                <form class="form-horizontal" action="@controllers.routes.Artists.findByName()">
+                    <div class="form-group">
+                        <label for="search" class="col-sm-2 control-label">Nombre</label>    
+                        <input type="text" class="form" name="name" id="name" placeholder="Artista"/>
+                        <input type="submit" class="btn btn-primary" value="Buscar" />
+                    </div>            
+                </form>            
+            </div>              
+            
+            <hr>    
+            
+            <table class="table table-responsive">
+                <tr>
+                    <th>Artistas</th>                                    
+                </tr>                
+                @for(artist <- artistList){
+                <tr>
+                    <td><a href="@controllers.routes.Artists.getArtist(artist.getId())">@artist.getName()</a></td>                                    
+                </tr>              
+                }
+            </table>            
+        </div>
+    </body>
+</html>

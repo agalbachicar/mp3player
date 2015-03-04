@@ -1,0 +1,15 @@
+@(title : String, backCall : Call, singOutCall : Call)
+
+<div class="page-header">
+    <h1>@title
+        <small>
+            @if(backCall != null){
+            <a href="@backCall">Atrás</a>
+            }
+            @if(singOutCall != null){
+            <a href="@singOutCall">Salir</a>
+            }        
+        </small>   
+    </h1>
+</div>
+<hr>

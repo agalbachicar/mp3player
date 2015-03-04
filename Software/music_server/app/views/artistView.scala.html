@@ -1,0 +1,28 @@
+@(artist : Artist, albums : List[Album])
+
+<div class="row-fluid">
+    @if(artist.getName() != null){
+    <h1>@artist.getName()</h1>
+    }else{
+    <h1>Unknown</h1>
+    }
+    <br/>
+    <div>
+        <h3>Albums</h3>    
+        @if(albums != null){
+        <ul>    
+            @for(album <- albums){
+            <li>
+                <a href="@controllers.routes.Albums.getAlbum(album.getId())">
+                @if(album.getName() != null){
+                    @album.getName()
+                }else{
+                    Unknown
+                }</a>
+            </li>    
+            }        
+        </ul>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#Login page
+GET     /                           controllers.Application.login()
+POST    /authenticate               controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
+POST    /register                   controllers.Application.register()
+
+#Start panel
+GET     /home                       controllers.Application.panel()
+
+#Song panel
+GET     /songs                      controllers.Songs.songs()
+GET     /song                       controllers.Songs.findByName()
+GET     /song/:id                   controllers.Songs.getSong(id : Long)
+GET     /songs/upload               controllers.Songs.uploadView()
+POST    /song/upload                controllers.Songs.uploadSong()
+GET     /songs/download/:id         controllers.Songs.donwload(id : Long)
+GET     /songs/delete/:id           controllers.Songs.delete(id : Long)
+GET     /songs/next/:id             controllers.Songs.getNextSong(id : Long)
+GET     /songs/previous/:id         controllers.Songs.getPreviousSong(id : Long)
+
+#Artist panel
+GET     /artists                    controllers.Artists.artists()
+GET     /artist                     controllers.Artists.findByName()
+GET     /artist/:id                 controllers.Artists.getArtist(id : Long)
+
+
+#Album panel
+GET     /albums                     controllers.Albums.albums()
+GET     /album                      controllers.Albums.findByName()
+GET     /album/:id                  controllers.Albums.getAlbum(id : Long)
+
+
+#Playlist panel
+GET     /playlists                  controllers.Playlists.playlists()
+GET     /playlist/:id               controllers.Playlists.getPlaylist(id : Long)
+
+
+#Devices panel
+GET     /devices                    controllers.Devices.devices()
+GET     /devices/add                controllers.Devices.add()
+GET     /devices/delete/:id         controllers.Devices.delete(id : Long)
+GET     /devices/config/:id         controllers.Devices.getConfig(id : Long)
+POST    /devices/config             controllers.Devices.config()
+POST    /device                     controllers.Devices.onAdd()
+
+#Configuration panel
+GET     /configurations             controllers.Configurations.configurations()
+POST    /configuration/update       controllers.Configurations.update()
+
